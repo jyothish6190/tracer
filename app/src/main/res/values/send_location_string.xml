@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help_send_location">Select one contact to which you want to share your current location. </string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageButton
+        android:id="@+id/update"
+        android:layout_width="80dp"
+        android:layout_height="85dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="63dp"
+        android:layout_marginTop="37dp"
+        android:background="@drawable/icon" />
+
+</RelativeLayout>
+<!-- From: file:/Users/developeradmin/Desktop/Tracer1/app/src/main/res/layout/widget.xml -->

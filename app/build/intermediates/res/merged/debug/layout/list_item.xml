@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="6dip"
+    >
+
+    <!-- Title Of Song-->
+    <TextView
+        android:id="@+id/edit_contact_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rihanna Love the way lie"
+        android:textColor="#3a6cbd"
+        android:textSize="18dip"
+        android:typeface="sans" />
+
+    <!-- Artist Name -->
+    <TextView
+        android:id="@+id/edit_contact_number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_contact_name"
+        android:layout_marginTop="1dip"
+        android:text="Just gona stand there and ..."
+        android:textColor="#000"
+        android:textSize="12dip" />
+
+    <!-- Rightend Arrow -->
+    <ImageView
+        android:id="@+id/contact_action_image"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/trash" />
+
+</RelativeLayout><!-- From: file:/C:/Users/Jyothish%20Jose/Desktop/Tracer1/app/src/main/res/layout/list_item.xml -->

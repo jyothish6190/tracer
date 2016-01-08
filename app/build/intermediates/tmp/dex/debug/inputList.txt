@@ -1,0 +1,2 @@
+/Users/developeradmin/Desktop/Tracer1/app/build/intermediates/classes/debug
+/Users/developeradmin/Desktop/Tracer1/app/build/intermediates/pre-dexed/debug/support-v4-18.0.0-5cc45f67eaffb76ca1bbb4ee3a40f77abdeee4af.jar
