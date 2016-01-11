@@ -11,33 +11,30 @@
 
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/location_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/remove_btn"
-        android:onClick="goToUrgent" />
+        android:background="@drawable/remove_btn" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/contacts_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/button3"
+        android:layout_toLeftOf="@+id/location_button"
         android:background="@drawable/add_butn"
-        android:onClick="goToEdit"
         android:textColor="@android:color/white" />
 
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/more_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/button3"
+        android:layout_toRightOf="@+id/location_button"
         android:background="@drawable/security_btn"
-        android:onClick=""
         android:textColor="@android:color/white" />
 
 </RelativeLayout><!-- From: file:/C:/Users/Jyothish%20Jose/Desktop/Tracer1/app/src/main/res/layout/content_activity_main.xml -->

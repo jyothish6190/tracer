@@ -13,22 +13,30 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 
-import com.exalture.tracer.activity.AddSecurityNumberActivity;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.exalture.tracer.activity.SettingsActivity;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnClickListener{
+    private static final String TAG = "MainActivity";
+
     private dbContacts dbcontact;
-    List<Pref_Number> result_in;
     Context	context;
+
+    private Button moreButton;
+    private Button locationButton;
+    private Button contactsButton;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dbcontact = new dbContacts(getApplicationContext());
+
+        contactsButton = (Button) findViewById(R.id.contacts_button);
+        locationButton = (Button) findViewById(R.id.location_button);
+        moreButton = (Button) findViewById(R.id.more_button);
 
         context = getApplicationContext();
         context.startService(new Intent(context, myReceiver.class));
@@ -62,6 +70,11 @@ public class MainActivity extends Activity {
 			edit.commit();
 			showHelp();
 		}
+
+        contactsButton.setOnClickListener(this);
+        locationButton.setOnClickListener(this);
+        moreButton.setOnClickListener(this);
+
 	}
 	
 	public void showHelp() {
@@ -75,38 +88,18 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	public void addContact(View v) {
-		startActivity(new Intent(this, EditListActivity.class));
-	}
-
-	public void goToPref(View v) {
-		startActivity(new Intent(this, AddSecurityNumberActivity.class));
-	}
-
-	public void goToUrgent(View v) { startActivity(new Intent(this, SendLocationActivity.class)); }
-
-	public void goToEdit(View v) {
-		result_in = new ArrayList<Pref_Number>();
-		try {
-			dbcontact.open();
-			result_in = dbcontact.getContactLists();
-			dbcontact.close();
-			if(result_in.size() <= 0) {
-				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder
-				.setTitle("No Contacts added..")
-				.setMessage("Do you want to add contacts ?")
-				.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {			      	
-						startActivity(new Intent(MainActivity.this, EditListActivity.class));
-					}
-				})
-				.setNegativeButton("No", null)						//Do nothing on no
-				.show();
-			} else {
-				startActivity(new Intent(this, EditListActivity.class));
-			}
-		}
-		catch(NullPointerException e) { }
-	}
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.contacts_button:
+                startActivity(new Intent(this, EditListActivity.class));
+                break;
+            case R.id.location_button:
+                startActivity(new Intent(this, SendLocationActivity.class));
+                break;
+            case R.id.more_button:
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                break;
+        }
+    }
 }

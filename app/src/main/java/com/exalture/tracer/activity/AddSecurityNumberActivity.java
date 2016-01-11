@@ -41,6 +41,7 @@ public class AddSecurityNumberActivity extends Activity implements OnClickListen
     private String phoneNumber = null;
 
     private boolean checked = false;
+    private int primary = 0;
 
     private dbContacts dbcontact;
 
@@ -91,6 +92,7 @@ public class AddSecurityNumberActivity extends Activity implements OnClickListen
             Toast.makeText(getApplicationContext(), "Contact added successfuly", Toast.LENGTH_LONG).show();
 
             startActivity(new Intent(this, MainActivity.class));
+            finish();
         }
     }
 
@@ -114,7 +116,7 @@ public class AddSecurityNumberActivity extends Activity implements OnClickListen
                     dbcontact.open();
                     boolean exist = dbcontact.isExist(number);
                     if (!exist) {
-                        long insertid = dbcontact.addNumber(number, name);
+                        long insertid = dbcontact.addNumber(number, name, primary);
                         Toast.makeText(getApplicationContext(), "Contact added successfully", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(this, MainActivity.class));
                     } else {
@@ -146,6 +148,7 @@ public class AddSecurityNumberActivity extends Activity implements OnClickListen
                             while (phoneCursor.moveToNext()) {
                                 name = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
                                 phoneNumber = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                                phoneNumber = phoneNumber.replaceAll("[()\\s-]+", "");
                             }
 
                             editName.setText(name);
@@ -164,6 +167,7 @@ public class AddSecurityNumberActivity extends Activity implements OnClickListen
             case R.id.save_button:
                 if (checked) {
                     saveSecurityNumber();
+                    primary = 1;
                 }
                 saveContact();
                 break;

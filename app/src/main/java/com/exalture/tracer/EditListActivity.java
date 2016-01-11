@@ -19,21 +19,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EditListActivity extends Activity {
-	private dbContacts dbcontact;
-	 List<Pref_Number> result_in;
-	 List<Pref_Number> result_out;
-	 ListView listview ;
-	 String[] names;
-     String[] numbers;
+    private dbContacts dbcontact;
+    List<Pref_Number> result_in;
+    List<Pref_Number> result_out;
+    ListView listview;
+    String[] names;
+    String[] numbers;
+
+    int primaryPosition;
+
 
     private Button addFloatButton;
 
     ContactsAdapter adapter;
-		
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_edit_list);
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_edit_list);
 
         addFloatButton = (Button) findViewById(R.id.add_contact_float_button);
 
@@ -44,38 +47,38 @@ public class EditListActivity extends Activity {
             }
         });
 
-		dbcontact = new dbContacts(getApplicationContext());
-		listview = (ListView)findViewById(R.id.contactslist);
-		listview.setClickable(true);
-		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        dbcontact = new dbContacts(getApplicationContext());
+        listview = (ListView) findViewById(R.id.contactslist);
+        listview.setClickable(true);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-			  @Override
-			  public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-             Object o = numbers[position];
-			 final String new_number = o.toString();
-			 AlertDialog.Builder builder = new AlertDialog.Builder(EditListActivity.this);
-			 builder.setTitle("Remove From List").setMessage("Are you sure to remove "+ names[position] +" ?")
-			 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                 public void onClick(DialogInterface dialog, int which) {
-                     dbcontact.open();
-                     boolean rs = dbcontact.deleteNumber(new_number);
-                     dbcontact.close();
-                     if (rs == true) {
-                         Toast.makeText(getApplicationContext(), "deleted", Toast.LENGTH_LONG).show();
-                         finish();
-                         startActivity(new Intent(EditListActivity.this, EditListActivity.class));
-                     } else {
-                         Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG).show();
-                     }
-                 }
-             })
-			 .setNegativeButton("No", null)						//Do nothing on no
-			 .show();
-		 }
-			});
-	
-	    result_in = new ArrayList<Pref_Number>();
-	    try {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                Object o = numbers[position];
+                final String new_number = o.toString();
+                AlertDialog.Builder builder = new AlertDialog.Builder(EditListActivity.this);
+                builder.setTitle("Remove From List").setMessage("Are you sure to remove " + names[position] + " ?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dbcontact.open();
+                                boolean rs = dbcontact.deleteNumber(new_number);
+                                dbcontact.close();
+                                if (rs == true) {
+                                    Toast.makeText(getApplicationContext(), "deleted", Toast.LENGTH_LONG).show();
+                                    finish();
+                                    startActivity(new Intent(EditListActivity.this, EditListActivity.class));
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        })
+                        .setNegativeButton("No", null)                        //Do nothing on no
+                        .show();
+            }
+        });
+
+        result_in = new ArrayList<Pref_Number>();
+        try {
             dbcontact.open();
             result_in = dbcontact.getContactLists();
             dbcontact.close();
@@ -84,10 +87,14 @@ public class EditListActivity extends Activity {
                 names = new String[size];
                 numbers = new String[size];
                 for (int i = 0; i < result_in.size(); i++) {
+                    if(result_in.get(i).getPrimary() == 1){
+                        primaryPosition = i;
+                    }
                     names[i] = result_in.get(i).getName();
                     numbers[i] = result_in.get(i).getNumber();
+
                 }
-                adapter = new ContactsAdapter(this, names, numbers, 1);
+                adapter = new ContactsAdapter(this, names, numbers, primaryPosition, 1);
                 listview.setAdapter(adapter);
             } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(EditListActivity.this);
@@ -106,13 +113,14 @@ public class EditListActivity extends Activity {
                         })                        //Do nothing on no
                         .show();
             }
-        } catch(NullPointerException e) { }
+        } catch (NullPointerException e) {
+        }
     }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.edit_list, menu);
-		return true;
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.edit_list, menu);
+        return true;
+    }
 }

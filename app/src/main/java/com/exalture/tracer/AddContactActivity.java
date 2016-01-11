@@ -139,7 +139,7 @@ public class AddContactActivity extends Activity {
 					dbcontact.open();
 					boolean exist = dbcontact.isExist(number);
 					if (!exist) {
-						long insertid = dbcontact.addNumber(number, name);
+//						long insertid = dbcontact.addNumber(number, name);
 						Toast.makeText(getApplicationContext(), "Contact added successfully", Toast.LENGTH_LONG).show();
 						startActivity(new Intent(this, MainActivity.class));
 					} else {

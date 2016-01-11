@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Jyothish Jose\Desktop\Tracer1\app\src\main\AndroidManifest.xml:2:1-87:12
+ADDED from C:\Users\Jyothish Jose\Desktop\Tracer1\app\src\main\AndroidManifest.xml:2:1-91:12
 	package
 		ADDED from C:\Users\Jyothish Jose\Desktop\Tracer1\app\src\main\AndroidManifest.xml:3:5-34
 		INJECTED from C:\Users\Jyothish Jose\Desktop\Tracer1\app\src\main\AndroidManifest.xml
@@ -19,6 +19,7 @@ MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\Jyothish Jose\Des
 MERGED from [com.android.support:support-v4:22.2.1] C:\Users\Jyothish Jose\Desktop\Tracer1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:design:22.2.1] C:\Users\Jyothish Jose\Desktop\Tracer1\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\Jyothish Jose\Desktop\Tracer1\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:22.2.1] C:\Users\Jyothish Jose\Desktop\Tracer1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:22.2.1] C:\Users\Jyothish Jose\Desktop\Tracer1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:22.2.1] C:\Users\Jyothish Jose\Desktop\Tracer1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
@@ -78,11 +79,12 @@ ADDED from C:\Users\Jyothish Jose\Desktop\Tracer1\app\src\main\AndroidManifest.x
 	android:name
 		ADDED from C:\Users\Jyothish Jose\Desktop\Tracer1\app\src\main\AndroidManifest.xml:22:22-77
 application
-ADDED from C:\Users\Jyothish Jose\Desktop\Tracer1\app\src\main\AndroidManifest.xml:24:5-85:19
+ADDED from C:\Users\Jyothish Jose\Desktop\Tracer1\app\src\main\AndroidManifest.xml:24:5-89:19
 MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\Jyothish Jose\Desktop\Tracer1\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:22.2.1] C:\Users\Jyothish Jose\Desktop\Tracer1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:22.2.1] C:\Users\Jyothish Jose\Desktop\Tracer1\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\Jyothish Jose\Desktop\Tracer1\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:22.2.1] C:\Users\Jyothish Jose\Desktop\Tracer1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:22.2.1] C:\Users\Jyothish Jose\Desktop\Tracer1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:22.2.1] C:\Users\Jyothish Jose\Desktop\Tracer1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:22:5-20
 	android:label
@@ -197,3 +199,9 @@ ADDED from C:\Users\Jyothish Jose\Desktop\Tracer1\app\src\main\AndroidManifest.x
 		ADDED from C:\Users\Jyothish Jose\Desktop\Tracer1\app\src\main\AndroidManifest.xml:82:13-71
 	android:name
 		ADDED from C:\Users\Jyothish Jose\Desktop\Tracer1\app\src\main\AndroidManifest.xml:81:13-63
+activity#com.exalture.tracer.activity.SettingsActivity
+ADDED from C:\Users\Jyothish Jose\Desktop\Tracer1\app\src\main\AndroidManifest.xml:85:9-88:20
+	android:label
+		ADDED from C:\Users\Jyothish Jose\Desktop\Tracer1\app\src\main\AndroidManifest.xml:87:13-60
+	android:name
+		ADDED from C:\Users\Jyothish Jose\Desktop\Tracer1\app\src\main\AndroidManifest.xml:86:13-54

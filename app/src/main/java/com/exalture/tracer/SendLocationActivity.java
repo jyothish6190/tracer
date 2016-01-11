@@ -47,8 +47,8 @@ public class SendLocationActivity extends Activity {
                                 String message = gps.message();
                                 SmsManager smsManager = SmsManager.getDefault();
                                 smsManager.sendTextMessage(toWhome, null, message, null, null);
+                                startActivity(new Intent(SendLocationActivity.this, MainActivity.class));
                                 finish();
-                                startActivity(new Intent(SendLocationActivity.this, SendLocationActivity.class));
                             }
                         })
                         .setNegativeButton("No", null)						//Do nothing on no
@@ -69,7 +69,7 @@ public class SendLocationActivity extends Activity {
                     names[i] = result_in.get(i).getName();
                     numbers[i] = result_in.get(i).getNumber();
                 }
-                adapter = new ContactsAdapter(this, names, numbers, 2);
+                adapter = new ContactsAdapter(this, names, numbers,1 ,2);
                 listview.setAdapter(adapter);
             } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(SendLocationActivity.this);

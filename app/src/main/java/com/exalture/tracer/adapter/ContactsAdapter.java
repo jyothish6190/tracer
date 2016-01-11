@@ -2,6 +2,7 @@ package com.exalture.tracer.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,28 +13,30 @@ import android.widget.TextView;
 import com.exalture.tracer.R;
 
 /**
- * Created by Jyothish Jose on 05-01-2016.
+ * Created by Jyothish Jose on 11-01-2016.
  */
 public class ContactsAdapter extends BaseAdapter {
     private static final String TAG = "ContactsAdapter";
 
-    private int type = 1;
-
+    private Activity activity;
     private String[] names;
     private String[] numbers;
 
-//    ui reference
-    private Activity activity;
+    private int primaryPosition;
+    private int type;
+
     private TextView nameText;
     private TextView numberText;
-    private ImageView actionImage;
+    private ImageView contactImage;
 
     private static LayoutInflater inflater;
 
-    public ContactsAdapter(Activity activity, String[] names, String[] numbers, int type) {
+    public ContactsAdapter(Activity activity, String[] names, String[] numbers, int primaryPosition, int type) {
         this.activity = activity;
         this.names = names;
         this.numbers = numbers;
+
+        this.primaryPosition = primaryPosition;
         this.type = type;
 
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -41,7 +44,7 @@ public class ContactsAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return names.length;
+        return numbers.length;
     }
 
     @Override
@@ -56,7 +59,6 @@ public class ContactsAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         View view = convertView;
 
         if(view == null){
@@ -65,15 +67,19 @@ public class ContactsAdapter extends BaseAdapter {
 
         nameText = (TextView) view.findViewById(R.id.edit_contact_name);
         numberText = (TextView) view.findViewById(R.id.edit_contact_number);
-        actionImage = (ImageView) view.findViewById(R.id.contact_action_image);
+        contactImage = (ImageView) view.findViewById(R.id.contact_action_image);
 
         nameText.setText(names[position]);
         numberText.setText(numbers[position]);
 
-        if(type == 2){
-            actionImage.setImageResource(android.R.drawable.ic_menu_share);
+        if(primaryPosition == position){
+            view.setBackgroundColor(Color.LTGRAY);
+        }
+
+        if(type == 1){
+            contactImage.setImageResource(R.drawable.trash);
         } else{
-            actionImage.setImageResource(R.drawable.trash);
+            contactImage.setImageResource(android.R.drawable.ic_menu_share);
         }
 
         return view;
